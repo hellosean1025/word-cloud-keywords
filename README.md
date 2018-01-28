@@ -22,4 +22,4 @@ pip install jieba
 python main.py
 ```
 
-第三步：在 result 文件夹查看结果
+第三步：在 result 文件夹查看结果, 可以将 keywords.txt 文件内容复制到 [wordclound](https://www.wordclouds.com/#) 网站查看效果
