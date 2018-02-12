@@ -5,14 +5,14 @@ import os
 import json
 
 def getFileContent(filepath):
-  fs = open(filepath, 'r')
+  fs = open(filepath, 'r', encoding='UTF-8')
   content = fs.read()
   fs.close()
   return content
 
-def handlePunctuation(temp): 
-  string = re.sub("[　\s+\.\!\/_,$%^*(+\"\']+|[+——！“”，。？、~@#￥%……&*（）]+", "",temp)  
-  return string
+def handlePunctuation(temp):
+  str = re.sub("[　\\s+\\.\\!\\/_,$%^*(+\"\']+|[+——！“”，。？、~@#￥%……&*（）]+", "",temp)  
+  return str
 
 def getKeywords(content, words):
   keys = jieba.lcut(content)
@@ -68,8 +68,8 @@ def sordKeywords(words, limit):
 
 def run(dirpath, limit=200):
   words = word2keywords(dirpath, limit)
-  fs = open('./result/keywords.txt', 'w')
-  fs2 = open('./result/keywords.json', 'w')
+  fs = open('./result/keywords.txt', 'w',encoding='UTF-8')
+  fs2 = open('./result/keywords.json', 'w',encoding='UTF-8')
   fs2.write(json.dumps(words, indent=2))
   for word in words:
     fs.write( str(word['value']) + ' ' + word['name'] + "\n")
